@@ -74,7 +74,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisSpacing: 20.0,
                 ),
                 itemCount: count,
-                itemBuilder: (BuildContext context, int index) {
+                itemBuilder: (BuildContext context,  index) {
                   return customCard(
                     charitie: charitie![index],
                   );

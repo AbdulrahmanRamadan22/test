@@ -5,13 +5,13 @@ import 'package:login_firebase/widgets/defaultButton.dart';
 import 'package:login_firebase/widgets/show_toast.dart';
 import 'package:login_firebase/widgets/text_field.dart';
 
-class DonationPage extends StatelessWidget {
-  const DonationPage({super.key});
+class RechargePage extends StatelessWidget {
+  const RechargePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("التبرع"), centerTitle: true),
+      appBar: AppBar(title: const Text("شحن الرصيد"), centerTitle: true),
       body: BlocBuilder<BalanceCubit, BalanceState>(
         // var  key=context.read<BalanceCubit>().formkey,
 
@@ -25,18 +25,12 @@ class DonationPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   defaultFormField(
-                      controller: context.read<BalanceCubit>().donationAmount,
+                      controller: context.read<BalanceCubit>().shippingBalance,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return "donationAmount  must not be empty";
-                        } else if (double.parse(value).toInt() <= 0) {
+                          return "shippingBalance  must not be empty";
+                        } else if (double.parse(value).toInt() < 0) {
                           return "You must enter a valid number";
-                        } else if (double.parse(context
-                                .read<BalanceCubit>()
-                                .donationAmount
-                                .text) >
-                            context.read<BalanceCubit>().myBalance) {
-                          return "Your balance is insufficient";
                         }
                         return null;
                       },
@@ -48,20 +42,22 @@ class DonationPage extends StatelessWidget {
                   defaultButton(
                       onPressed: () {
                         if (key.currentState!.validate()) {
-                          context.read<BalanceCubit>().donation(
-                              context.read<BalanceCubit>().donationAmount);
+                          context.read<BalanceCubit>().addBalance(
+                              context.read<BalanceCubit>().shippingBalance);
 
                           showToast(
-                              msg: "Your donation has been successful",
+                              msg: "Your balance has been charged successfully",
                               backgroundColor: Colors.grey);
 
-                          Navigator.of(context).pushNamed("AccountPage");
+                              
+
+                          Navigator.pop(context);
                         }
                       },
                       height: 50,
                       radius: 8,
                       width: 300,
-                      text: "اتمام  عمليه التبرع"),
+                      text: "اتمام  عمليه الشحن"),
                 ],
               ),
             ),

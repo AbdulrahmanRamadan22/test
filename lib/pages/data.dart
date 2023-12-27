@@ -75,7 +75,7 @@ class data extends StatelessWidget {
                       Navigator.of(context).pushNamed("DonationPage");
                     },
                     text: "اتبرع الان",
-                    width: 200)
+                    width: 200),
               ],
             ),
           ),
