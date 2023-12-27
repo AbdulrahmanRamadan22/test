@@ -20,10 +20,8 @@ class AccountPage extends StatelessWidget {
       appBar: AppBar(
           leading: IconButton(
             onPressed: () {
-              Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(
-                      builder: (BuildContext context) => const HomePage()),
-                  (Route route) => route == null);
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil("HomePage", (route) => false);
             },
             icon: const Icon(Icons.arrow_back_ios),
             //replace with our own icon data.
@@ -65,6 +63,7 @@ class AccountPage extends StatelessWidget {
                   Navigator.of(context).pushNamed("RechargePage");
                 },
                 text: "شحن رصيدك",
+                
                 height: 50,
                 width: 250),
           ],

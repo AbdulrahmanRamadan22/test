@@ -16,7 +16,7 @@ class RechargePage extends StatelessWidget {
         // var  key=context.read<BalanceCubit>().formkey,
 
         builder: (context, state) {
-          GlobalKey<FormState> key = context.read<BalanceCubit>().formkey;
+          GlobalKey<FormState> key = context.read<BalanceCubit>().key;
           return Form(
             key: key,
             child: Padding(
@@ -40,7 +40,7 @@ class RechargePage extends StatelessWidget {
                     height: 40,
                   ),
                   defaultButton(
-                      onPressed: () {
+                      onPressed:() {
                         if (key.currentState!.validate()) {
                           context.read<BalanceCubit>().addBalance(
                               context.read<BalanceCubit>().shippingBalance);

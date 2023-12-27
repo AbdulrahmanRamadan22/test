@@ -18,6 +18,9 @@ class BalanceCubit extends Cubit<BalanceState> {
 
   final formkey = GlobalKey<FormState>();
 
+    final key = GlobalKey<FormState>();
+
+
   void donation(donationAmount) {
     myBalance = myBalance - double.parse(donationAmount.text);
     emit(LowBalance());
